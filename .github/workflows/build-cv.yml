@@ -3,12 +3,10 @@ name: Build CV PDF
 on:
   push:
     branches: [main]
-    paths:
-      - 'CV.tex'
-      - 'assets/**'
-      - 'Makefile'
-      - '.github/workflows/build-cv.yml'
   workflow_dispatch:
+
+permissions:
+  contents: write
 
 jobs:
   build:
@@ -23,3 +21,11 @@ jobs:
         with:
           name: CV.pdf
           path: CV.pdf
+      - name: Create release
+        uses: softprops/action-gh-release@v2
+        with:
+          tag_name: cv-${{ github.run_number }}
+          name: CV build ${{ github.run_number }}
+          body: Automated CV PDF release for commit ${{ github.sha }}.
+          files: CV.pdf
+          make_latest: true
