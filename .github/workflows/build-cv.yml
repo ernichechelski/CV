@@ -10,11 +10,17 @@ permissions:
 
 jobs:
   build:
+    if: ${{ !contains(github.event.head_commit.message, '[skip ci]') }}
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
       - name: Generate release-date CV data
         run: python3 scripts/generate_cv_data.py --date "$(date -u +%F)"
+      - name: Commit badge data
+        uses: stefanzweifel/git-auto-commit-action@v7
+        with:
+          commit_message: "Update experience badge data [skip ci]"
+          file_pattern: data/experience.json
       - uses: xu-cheng/latex-action@v3
         with:
           root_file: CV.tex
@@ -29,5 +35,7 @@ jobs:
           tag_name: cv-${{ github.run_number }}
           name: CV build ${{ github.run_number }}
           body: Automated CV PDF release for commit ${{ github.sha }}.
-          files: CV.pdf
+          files: |
+            CV.pdf
+            data/experience.json
           make_latest: true

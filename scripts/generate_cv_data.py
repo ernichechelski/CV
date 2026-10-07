@@ -11,6 +11,7 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parents[1]
 JOBS_PATH = ROOT / "data" / "jobs.json"
 OUTPUT_PATH = ROOT / "generated" / "cv-data.tex"
+BADGE_PATH = ROOT / "data" / "experience.json"
 DATE_FORMAT = "%d.%m.%Y"
 
 
@@ -69,6 +70,20 @@ def main() -> None:
         escaped = summary.replace("&", r"\\&").replace("%", r"\\%")
         lines.append(f"\\def\\job{index}Tasks{{{escaped}}}")
     OUTPUT_PATH.write_text("\n".join(lines) + "\n", encoding="utf-8")
+    BADGE_PATH.parent.mkdir(parents=True, exist_ok=True)
+    BADGE_PATH.write_text(
+        json.dumps(
+            {
+                "schemaVersion": 1,
+                "label": "experience",
+                "message": f"{years} years",
+                "color": "542B2B",
+            },
+            indent=2,
+        )
+        + "\n",
+        encoding="utf-8",
+    )
     print(f"Generated {OUTPUT_PATH.relative_to(ROOT)}: {years} years as of {as_of.isoformat()}")
 
 
