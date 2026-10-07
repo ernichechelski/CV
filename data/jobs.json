@@ -1,0 +1,51 @@
+[
+  {
+    "name": "OLX",
+    "role": "Senior iOS Developer",
+    "startDate": "01.03.2024",
+    "endDate": null,
+    "tasks": [
+      "development",
+      "bug fixing",
+      "performance improvements of search"
+    ]
+  },
+  {
+    "name": "Centralny Ośrodek Informatyki",
+    "role": "Senior iOS Developer",
+    "startDate": "01.05.2023",
+    "endDate": "29.02.2024",
+    "tasks": [
+      "senior iOS development",
+      "mObywatel iOS App development",
+      "user verification flow and digital signing data"
+    ]
+  },
+  {
+    "name": "Netguru",
+    "role": "iOS Developer / Senior iOS Developer",
+    "startDate": "01.07.2019",
+    "endDate": "30.04.2023",
+    "tasks": [
+      "development",
+      "recruitment and mentoring",
+      "promotion support and knowledge sharing",
+      "small team leadership",
+      "code review support",
+      "complete SDLC in an agile sprint-based environment"
+    ]
+  },
+  {
+    "name": "Globallogic",
+    "role": "iOS / Android Developer",
+    "startDate": "01.07.2017",
+    "endDate": "30.04.2019",
+    "tasks": [
+      "bug fixing",
+      "adjusting differences between platforms",
+      "unit tests",
+      "code refactoring for further maintenance",
+      "development of new features"
+    ]
+  }
+]

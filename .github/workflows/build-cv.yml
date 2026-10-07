@@ -13,6 +13,8 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+      - name: Generate release-date CV data
+        run: python3 scripts/generate_cv_data.py --date "$(date -u +%F)"
       - uses: xu-cheng/latex-action@v3
         with:
           root_file: CV.tex
